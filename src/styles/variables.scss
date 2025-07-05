@@ -1,3 +1,12 @@
 $block_size: 100px;
-$days: mon, tue, wed, thu, fri, sat, sun;
 $gap: 1px;
+$calendar-padding: 10px;
+$days: (
+  mon: 0,
+  tue: 1,
+  wed: 2,
+  thu: 3,
+  fri: 4,
+  sat: 5,
+  sun: 6,
+);

@@ -2,7 +2,7 @@
 
 body {
   margin: 0;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,7 +13,7 @@ body {
   flex-wrap: wrap;
   gap: $gap;
   padding: 10px;
-  width: ($block_size * 7) + ($gap * 6) + 20;
+  width: ($block_size * 7) + ($gap * 6) + ($calendar-padding * 2);
   margin: 0 auto;
 
   &__day {
@@ -49,17 +49,14 @@ body {
   }
 }
 
-@each $day in $days {
-  // stylelint-disable-next-line scss/no-global-function-names
-  $index: index($days, $day) - 1;
-  .calendar--start-day-#{$day} > .calendar__day:first-child {
-    margin-left: calc((#{$block_size} + #{$gap}) * #{$index});
+@each $day, $index in $days {
+  .calendar--start-day_#{$day} .calendar__day:first-child {
+    margin-left: calc(#{$index} * (#{$block_size} + #{$gap}));
   }
 }
 
-@for $length from 28 through 30 {
-  .calendar--month-length-#{$length}
-    > .calendar__day:nth-child(n + #{ $length + 1 }) {
+@for $i from 29 through 31 {
+  .calendar--month-length_#{$i} .calendar__day:nth-child(n + #{$i + 1}) {
     display: none;
   }
 }
